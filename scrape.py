@@ -26,20 +26,22 @@ for i in range(1,8):
 	for j in range(0,len(no_name)):
 		query = no_name[j]
 		contest_id.append(co[query-2].a.attrs['href'].split('/')[3])
+
 	for j in range(0, len(contest_id)):
 		url = 'http://codeforces.com/contest/'+contest_id[j]+'/submission/'+problem_id[j]
-		strng = contest_id[j]+"-"+problem_id[j]
 
-
-		target = open(strng, "w")
-
-		print 'getting code '+str(j)+' of page '+str(i)
+		
 		r = urllib.urlopen(url)
-		print 'got code '+str(j)+' of page '+str(i)
 		soup = BeautifulSoup(r)
+		var = soup.find_all('td')
+		problem_name = var[2].a['href'].split('/')[4]
+
+		print 'getting code '+contest_id[j]+'-'+problem_name
+		
 		co = soup.find_all('div')
-
-
+		target = open(contest_id[j]+'-'+problem_name, "w")
+		
 		for row in co[26].find_all('pre',attrs={"class" : "program-source"}):
 			target.write(row.text)
+		print 'got code '+contest_id[j]+'-'+problem_name
 		target.close()
