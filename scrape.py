@@ -31,7 +31,7 @@ for i in range(1,8):
 		url = 'http://codeforces.com/contest/'+contest_id[j]+'/submission/'+problem_id[j]
 		strng = contest_id[j]+"-"+problem_id[j]
 
-# open(strng, "w")
+
 		target = open(strng, "w")
 
 		print 'getting code '+str(j)+' of page '+str(i)
@@ -40,7 +40,7 @@ for i in range(1,8):
 		soup = BeautifulSoup(r)
 		co = soup.find_all('div')
 
-# print len(chull)Q3
+
 		for row in co[26].find_all('pre',attrs={"class" : "program-source"}):
 			target.write(row.text)
 		target.close()
