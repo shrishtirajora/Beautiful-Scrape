@@ -1,11 +1,11 @@
 # Beautiful-Scrape
 
 
-#Dependencies : Python2.7 , Beautiful Soup 4 , Urllib module .
+###Dependencies : Python2.7 , Beautiful Soup 4 , Urllib module .
 
 
-#Description : The code pull's out all the AC codes from your codeforces profile.
+###Description : The code pull's out all the AC codes from your codeforces profile.
 
 
-#How to run : python scrape.py 
+###How to run : python scrape.py 
 
