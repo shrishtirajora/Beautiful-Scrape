@@ -1,4 +1,3 @@
-## this part of code pulls out all accepted ids from user's account 
 from bs4 import BeautifulSoup
 import urllib
 import os
