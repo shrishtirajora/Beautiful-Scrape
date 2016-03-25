@@ -6,7 +6,7 @@ no_name = []
 contest_id = []
 handle = raw_input("Type your handle")
 
-for i in range(1,8):
+for i in range(1,63):
 	print 'grabbing data'
 	gen_url = 'http://codeforces.com/submissions/'+handle+'/page/' + str(i)
 	r = urllib.urlopen(gen_url)
