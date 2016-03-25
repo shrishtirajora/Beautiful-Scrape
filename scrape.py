@@ -1,16 +1,17 @@
 from bs4 import BeautifulSoup
-import urllib
+import urllib2
 import os
-problem_id = []
-no_name = []
-contest_id = []
 handle = raw_input("Type your handle")
 
 for i in range(1,63):
 	print 'grabbing data'
 	gen_url = 'http://codeforces.com/submissions/'+handle+'/page/' + str(i)
-	r = urllib.urlopen(gen_url)
+	print gen_url
+	r = urllib2.urlopen(gen_url)
 	print 'done'
+
+	problem_id = []
+	no_name = []
 
 	soup = BeautifulSoup(r)
 	co = soup.find_all('td')
@@ -22,7 +23,7 @@ for i in range(1,63):
 					problem_id.append(co[row].span.attrs['submissionid'])
 					no_name.append(row)
 
-	
+	contest_id = []
 	for j in range(0,len(no_name)):
 		query = no_name[j]
 		contest_id.append(co[query-2].a.attrs['href'].split('/')[3])
@@ -31,7 +32,7 @@ for i in range(1,63):
 		url = 'http://codeforces.com/contest/'+contest_id[j]+'/submission/'+problem_id[j]
 
 		
-		r = urllib.urlopen(url)
+		r = urllib2.urlopen(url)
 		soup = BeautifulSoup(r)
 		var = soup.find_all('td')
 		problem_name = var[2].a['href'].split('/')[4]
